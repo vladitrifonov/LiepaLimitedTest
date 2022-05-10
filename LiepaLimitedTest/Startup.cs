@@ -1,3 +1,8 @@
+using LiepaLimitedTest.Domain.Contracts;
+using LiepaLimitedTest.Domain.Entities;
+using LiepaLimitedTest.Infrastructure.Dapper;
+using LiepaLimitedTest.Infrastructure.Dapper.Data;
+using LiepaLimitedTest.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +37,10 @@ namespace LiepaLimitedTest
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LiepaLimitedTest", Version = "v1" });
             });
+
+            string connectionString = Configuration.GetConnectionString("DbContext");
+
+            RegisterDapperDependencies(services, connectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +63,11 @@ namespace LiepaLimitedTest
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public void RegisterDapperDependencies(IServiceCollection services, string connectionString)
+        {
+            services.AddTransient<IRepository<UserEntity>>(x => new DapperRepository<UserEntity>(connectionString, new DapperConfiguration("Users", new UserHelper())));         
         }
     }
 }
