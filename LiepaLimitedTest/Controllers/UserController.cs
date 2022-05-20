@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LiepaLimitedTest.Domain.Contracts;
+using LiepaLimitedTest.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,18 +12,45 @@ namespace LiepaLimitedTest.Controllers
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
-    {       
-        private readonly ILogger<UserController> _logger;
-
-        public UserController(ILogger<UserController> logger)
+    {
+        private readonly IGenericService<UserEntity> _genericService;
+        public UserController(IGenericService<UserEntity> genericService)
         {
-            _logger = logger;
+            _genericService = genericService;
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new List<string> {"1", "2" };
+            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+
+            return Ok(user);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Create(UserEntity userEntity)
+        {
+            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+
+            return Ok(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(UserEntity userEntity)
+        {
+            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+
+            return Ok(user);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SetStatus(UserEntity userEntity)
+        {
+            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+
+            return Ok(user);
         }
     }
 }

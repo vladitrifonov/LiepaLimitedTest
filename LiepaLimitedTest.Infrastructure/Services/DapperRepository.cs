@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace LiepaLimitedTest.Infrastructure.Services
 {
@@ -23,7 +23,7 @@ namespace LiepaLimitedTest.Infrastructure.Services
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new MySqlConnection(_connectionString))
             {
                 return await db.QueryAsync<T>(_dapperConfiguration.GetSelectQuery());
             }
@@ -31,7 +31,7 @@ namespace LiepaLimitedTest.Infrastructure.Services
                
         public async Task<T> GetByIdAsync(int id)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new MySqlConnection(_connectionString))
             {
                 IEnumerable<T> collection = await db.QueryAsync<T>(_dapperConfiguration.GetSelectByIdQuery(), new { id });
                 return collection.FirstOrDefault();
@@ -40,7 +40,7 @@ namespace LiepaLimitedTest.Infrastructure.Services
                
         public async Task<T> CreateAsync(T entity)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new MySqlConnection(_connectionString))
             {
                 await db.ExecuteAsync(_dapperConfiguration.GetCreateQuery(), entity);
                 return entity;
@@ -49,7 +49,7 @@ namespace LiepaLimitedTest.Infrastructure.Services
                
         public async Task<T> UpdateAsync(T entity)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new MySqlConnection(_connectionString))
             {
                 await db.ExecuteAsync(_dapperConfiguration.GetUpdateQuery(), entity);
                 return entity;
@@ -58,7 +58,7 @@ namespace LiepaLimitedTest.Infrastructure.Services
 
         public async Task DeleteAsync(T entity)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new MySqlConnection(_connectionString))
             {
                 await db.ExecuteAsync(_dapperConfiguration.GetDeleteQuery(), new { entity.Id });
             }

@@ -5,9 +5,11 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiepaLimitedTest.Api", "LiepaLimitedTest\LiepaLimitedTest.Api.csproj", "{4FA7AED9-54F3-4E7A-A939-C091844523CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiepaLimitedTest.Domain", "LiepaLimitedTest.Domain\LiepaLimitedTest.Domain.csproj", "{903393B7-31C2-4D6D-B78B-6E0EFFD5F90F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiepaLimitedTest.Domain", "LiepaLimitedTest.Domain\LiepaLimitedTest.Domain.csproj", "{903393B7-31C2-4D6D-B78B-6E0EFFD5F90F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiepaLimitedTest.Infrastructure", "LiepaLimitedTest.Infrastructure\LiepaLimitedTest.Infrastructure.csproj", "{B810F015-C251-4D83-A471-93A049CC9011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiepaLimitedTest.Infrastructure", "LiepaLimitedTest.Infrastructure\LiepaLimitedTest.Infrastructure.csproj", "{B810F015-C251-4D83-A471-93A049CC9011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiepaLimitedTest.Applicaion", "LiepaLimitedTest.Applicaion\LiepaLimitedTest.Applicaion.csproj", "{6776D087-F95A-4A38-B647-0A9CB997162C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B810F015-C251-4D83-A471-93A049CC9011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B810F015-C251-4D83-A471-93A049CC9011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B810F015-C251-4D83-A471-93A049CC9011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6776D087-F95A-4A38-B647-0A9CB997162C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6776D087-F95A-4A38-B647-0A9CB997162C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6776D087-F95A-4A38-B647-0A9CB997162C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6776D087-F95A-4A38-B647-0A9CB997162C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

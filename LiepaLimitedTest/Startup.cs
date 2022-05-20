@@ -1,3 +1,5 @@
+using LiepaLimitedTest.Api.BackgroundJobs;
+using LiepaLimitedTest.Applicaion.Services;
 using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
 using LiepaLimitedTest.Infrastructure.Dapper;
@@ -34,6 +36,14 @@ namespace LiepaLimitedTest
             string connectionString = Configuration.GetConnectionString("DbContext");
 
             RegisterDapperDependencies(services, connectionString);
+
+            services.AddHostedService<SyncronizeBackgroundService<UserEntity>>();
+
+            services.AddTransient<ISyncronizeManager<UserEntity>, SyncronizeService<UserEntity>>();
+
+            services.AddSingleton<ICacheManager<UserEntity>, UserCacheService>();
+
+            services.AddTransient<IGenericService<UserEntity>, GenericService<UserEntity>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
