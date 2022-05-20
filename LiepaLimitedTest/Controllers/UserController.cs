@@ -20,9 +20,9 @@ namespace LiepaLimitedTest.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(int id)
         {
-            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+            var user = await _genericService.GetByIdAsync(id);
 
             return Ok(user);
         }
@@ -31,7 +31,15 @@ namespace LiepaLimitedTest.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(UserEntity userEntity)
         {
-            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+            var user = await _genericService.CreateAsync(userEntity);
+
+            return Ok(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SetStatus(UserEntity userEntity)
+        {
+            var user = await _genericService.UpdateAsync(userEntity);
 
             return Ok(user);
         }
@@ -39,18 +47,9 @@ namespace LiepaLimitedTest.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(UserEntity userEntity)
         {
-            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
+            await _genericService.DeleteAsync(userEntity);
 
-            return Ok(user);
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> SetStatus(UserEntity userEntity)
-        {
-            var user = await _genericService.CreateAsync(new UserEntity { Name = "test", Status = Domain.DataTypes.Status.New });
-
-            return Ok(user);
-        }
+            return NoContent();
+        }       
     }
 }
