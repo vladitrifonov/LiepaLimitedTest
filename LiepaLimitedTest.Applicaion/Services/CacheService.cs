@@ -2,6 +2,7 @@
 using LiepaLimitedTest.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace LiepaLimitedTest.Applicaion.Services
 {
@@ -12,11 +13,10 @@ namespace LiepaLimitedTest.Applicaion.Services
         {
             if (cachedUsers.ContainsKey(id))
             {
-                return Task.FromResult<T>(cachedUsers[id]);
+                return Task.FromResult(cachedUsers[id]);
             }
 
-            //temproray, may be should return exception
-            return null;
+            throw new ArgumentException("There is no entity with this id");
         }
 
         public Task UpdateCache(IEnumerable<T> items)

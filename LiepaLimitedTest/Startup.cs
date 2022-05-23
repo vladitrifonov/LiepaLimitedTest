@@ -1,4 +1,8 @@
+using AutoMapper;
 using LiepaLimitedTest.Api.BackgroundJobs;
+using LiepaLimitedTest.Applicaion.Mapper;
+using LiepaLimitedTest.Applicaion.Mapper.Configuration;
+using LiepaLimitedTest.Applicaion.Models;
 using LiepaLimitedTest.Applicaion.Services;
 using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
@@ -43,7 +47,15 @@ namespace LiepaLimitedTest
 
             services.AddSingleton<ICacheManager<UserEntity>, UserCacheService>();
 
-            services.AddTransient<IGenericService<UserEntity>, GenericService<UserEntity>>();
+            services.AddTransient<IGenericService<UserEntity, User>, GenericService<UserEntity, User>>();
+
+            services.AddTransient<Domain.Contracts.IMapper, SimpleMapper>();
+
+            var autoMapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<AutoMapperConfiguration>();
+            });
+            services.AddTransient(x => autoMapperConfig.CreateMapper());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

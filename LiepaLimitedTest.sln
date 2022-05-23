@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiepaLimitedTest.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiepaLimitedTest.Applicaion", "LiepaLimitedTest.Applicaion\LiepaLimitedTest.Applicaion.csproj", "{6776D087-F95A-4A38-B647-0A9CB997162C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiepaLimitedTest.Test", "LiepaLimitedTest.Test\LiepaLimitedTest.Test.csproj", "{AD1C54A0-B691-4017-AA41-1052D7653336}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6776D087-F95A-4A38-B647-0A9CB997162C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6776D087-F95A-4A38-B647-0A9CB997162C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6776D087-F95A-4A38-B647-0A9CB997162C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1C54A0-B691-4017-AA41-1052D7653336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1C54A0-B691-4017-AA41-1052D7653336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1C54A0-B691-4017-AA41-1052D7653336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1C54A0-B691-4017-AA41-1052D7653336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

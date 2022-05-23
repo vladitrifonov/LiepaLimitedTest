@@ -2,11 +2,11 @@
 
 namespace LiepaLimitedTest.Domain.Contracts
 {
-    public interface IGenericService<T>
+    public interface IGenericService<TEntity, TModel>
     {
-        Task<T> GetByIdAsync(int id);
-        Task<T> CreateAsync(T item);
-        Task<T> UpdateAsync(T item);
-        Task DeleteAsync(T item);
+        Task<TModel> GetByIdAsync(int id);
+        Task<TModel> CreateAsync(TModel item);
+        Task<TModel> UpdateAsync(TModel item);
+        Task DeleteAsync(TModel item);
     }
 }

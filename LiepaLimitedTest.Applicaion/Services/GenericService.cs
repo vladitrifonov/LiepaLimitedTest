@@ -1,41 +1,45 @@
-﻿using LiepaLimitedTest.Domain.Contracts;
+﻿using LiepaLimitedTest.Applicaion.Models;
+using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LiepaLimitedTest.Applicaion.Services
 {
-    //may be should make mapper from model to entity
-    public class GenericService<T> : IGenericService<T> where T : BaseEntity
+    public class GenericService<TEntity, TModel> : IGenericService<TEntity, TModel> where TEntity : BaseEntity where TModel : EntityModel
     {
-        private readonly IRepository<T> _repository;
-        private readonly ICacheManager<T> _cacheManager;
+        private readonly IRepository<TEntity> _repository;
+        private readonly ICacheManager<TEntity> _cacheManager;
+        private readonly IMapper _mapper;
 
-        public GenericService(IRepository<T> repository, ICacheManager<T> cacheManager)
+        public GenericService(IRepository<TEntity> repository, ICacheManager<TEntity> cacheManager, IMapper mapper)
         {
             _repository = repository;
             _cacheManager = cacheManager;
+            _mapper = mapper;
         }
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<TModel> GetByIdAsync(int id)
         {
-            return await _cacheManager.Get(id);
+            var entity = await _cacheManager.Get(id);
+
+            return _mapper.Map<TEntity, TModel>(entity);
         }
-        public Task<T> CreateAsync(T item)
+        public async Task<TModel> CreateAsync(TModel item)
         {
-            return _repository.CreateAsync(item);
+            var entity = await _repository.CreateAsync(_mapper.Map<TModel, TEntity>(item));
+
+            return _mapper.Map<TEntity, TModel>(entity);
         }
 
-        public Task<T> UpdateAsync(T item)
+        public async Task<TModel> UpdateAsync(TModel item)
         {
-            return _repository.UpdateAsync(item);
+            var entity = await _repository.UpdateAsync(_mapper.Map<TModel, TEntity>(item));
+
+            return _mapper.Map<TEntity, TModel>(entity);
         }
 
-        public Task DeleteAsync(T item)
+        public async Task DeleteAsync(TModel item)
         {
-            return _repository.DeleteAsync(item);
+            await _repository.DeleteAsync(_mapper.Map<TModel, TEntity>(item));
         }
     }
 }

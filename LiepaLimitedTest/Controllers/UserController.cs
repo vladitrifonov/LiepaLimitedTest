@@ -1,10 +1,7 @@
-﻿using LiepaLimitedTest.Domain.Contracts;
+﻿using LiepaLimitedTest.Applicaion.Models;
+using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LiepaLimitedTest.Controllers
@@ -13,8 +10,8 @@ namespace LiepaLimitedTest.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IGenericService<UserEntity> _genericService;
-        public UserController(IGenericService<UserEntity> genericService)
+        private readonly IGenericService<UserEntity, User> _genericService;
+        public UserController(IGenericService<UserEntity, User> genericService)
         {
             _genericService = genericService;
         }
@@ -29,25 +26,25 @@ namespace LiepaLimitedTest.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create(UserEntity userEntity)
+        public async Task<IActionResult> Create(User model)
         {
-            var user = await _genericService.CreateAsync(userEntity);
+            var user = await _genericService.CreateAsync(model);
 
             return Ok(user);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> SetStatus(UserEntity userEntity)
+        [HttpPost("/[controller]/status")]
+        public async Task<IActionResult> SetStatus(User model)
         {
-            var user = await _genericService.UpdateAsync(userEntity);
+            var user = await _genericService.UpdateAsync(model);
 
             return Ok(user);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Delete(UserEntity userEntity)
+              
+        [HttpPost("/[controller]/remove")]
+        public async Task<IActionResult> Delete(User model)
         {
-            await _genericService.DeleteAsync(userEntity);
+            await _genericService.DeleteAsync(model);
 
             return NoContent();
         }       
