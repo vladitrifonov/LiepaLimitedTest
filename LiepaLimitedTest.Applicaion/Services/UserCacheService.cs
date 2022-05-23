@@ -1,7 +1,7 @@
 ﻿using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
 
-namespace LiepaLimitedTest.Applicaion.Services
+namespace LiepaLimitedTest.Applicaion.Api.Services
 {
     public class UserCacheService : CacheService<UserEntity>
     {

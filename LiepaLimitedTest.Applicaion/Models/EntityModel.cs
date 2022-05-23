@@ -1,4 +1,4 @@
-﻿namespace LiepaLimitedTest.Applicaion.Models
+﻿namespace LiepaLimitedTest.Applicaion.Api.Models
 {
     public abstract class EntityModel
     {

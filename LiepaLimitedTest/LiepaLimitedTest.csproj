@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LiepaLimitedTest.Applicaion\LiepaLimitedTest.Applicaion.csproj" />
+    <ProjectReference Include="..\LiepaLimitedTest.Applicaion\LiepaLimitedTest.Applicaion.Api.csproj" />
     <ProjectReference Include="..\LiepaLimitedTest.Domain\LiepaLimitedTest.Domain.csproj" />
     <ProjectReference Include="..\LiepaLimitedTest.Infrastructure\LiepaLimitedTest.Infrastructure.csproj" />
   </ItemGroup>

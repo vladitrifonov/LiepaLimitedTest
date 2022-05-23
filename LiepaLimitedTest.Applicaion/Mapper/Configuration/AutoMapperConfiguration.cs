@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using LiepaLimitedTest.Applicaion.Models;
+using LiepaLimitedTest.Applicaion.Api.Models;
 using LiepaLimitedTest.Domain.Entities;
 
-namespace LiepaLimitedTest.Applicaion.Mapper.Configuration
+namespace LiepaLimitedTest.Applicaion.Api.Mapper.Configuration
 {
     public class AutoMapperConfiguration : Profile
     {

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 
-namespace LiepaLimitedTest.Applicaion.Services
+namespace LiepaLimitedTest.Applicaion.Api.Services
 {
-    public abstract class CacheService<T> : ICacheManager<T> where T : BaseEntity  
+    public abstract class CacheService<T> : ICacheManager<T> where T : BaseEntity
     {
         protected volatile Dictionary<int, T> cachedUsers = new Dictionary<int, T>();
         public Task<T> Get(int id)
@@ -23,12 +23,12 @@ namespace LiepaLimitedTest.Applicaion.Services
         {
             foreach (var item in items)
             {
-                if(cachedUsers.ContainsKey(item.Id))
+                if (cachedUsers.ContainsKey(item.Id))
                 {
-                    if(IsApropriate(item))
+                    if (IsApropriate(item))
                     {
                         cachedUsers[item.Id] = item;
-                    }                    
+                    }
                 }
                 else
                 {

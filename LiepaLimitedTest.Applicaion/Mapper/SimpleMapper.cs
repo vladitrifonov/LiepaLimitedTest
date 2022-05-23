@@ -1,6 +1,6 @@
 ﻿using LiepaLimitedTest.Domain.Contracts;
 
-namespace LiepaLimitedTest.Applicaion.Mapper
+namespace LiepaLimitedTest.Applicaion.Api.Mapper
 {
     public class SimpleMapper : IMapper
     {

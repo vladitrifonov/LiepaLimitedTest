@@ -3,7 +3,7 @@ using LiepaLimitedTest.Domain.Entities;
 using System;
 using System.Threading.Tasks;
 
-namespace LiepaLimitedTest.Applicaion.Services
+namespace LiepaLimitedTest.Applicaion.Api.Services
 {
     public class SyncronizeService<T> : ISyncronizeManager<T> where T : BaseEntity
     {

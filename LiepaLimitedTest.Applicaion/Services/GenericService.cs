@@ -1,9 +1,9 @@
-﻿using LiepaLimitedTest.Applicaion.Models;
+﻿using LiepaLimitedTest.Applicaion.Api.Models;
 using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
 using System.Threading.Tasks;
 
-namespace LiepaLimitedTest.Applicaion.Services
+namespace LiepaLimitedTest.Applicaion.Api.Services
 {
     public class GenericService<TEntity, TModel> : IGenericService<TEntity, TModel> where TEntity : BaseEntity where TModel : EntityModel
     {

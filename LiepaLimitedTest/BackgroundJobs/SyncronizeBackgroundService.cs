@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LiepaLimitedTest.Api.BackgroundJobs
+namespace LiepaLimitedTest.BackgroundJobs
 {
     public class SyncronizeBackgroundService<T> : BackgroundService
     {
@@ -16,7 +16,7 @@ namespace LiepaLimitedTest.Api.BackgroundJobs
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
-            {               
+            {
                 try
                 {
                     await _syncronizeManager.Synchronize();
@@ -24,8 +24,8 @@ namespace LiepaLimitedTest.Api.BackgroundJobs
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                }                
-                
+                }
+
                 await Task.Delay(10000, stoppingToken);
             }
         }

@@ -1,9 +1,9 @@
 using AutoMapper;
-using LiepaLimitedTest.Api.BackgroundJobs;
-using LiepaLimitedTest.Applicaion.Mapper;
-using LiepaLimitedTest.Applicaion.Mapper.Configuration;
-using LiepaLimitedTest.Applicaion.Models;
-using LiepaLimitedTest.Applicaion.Services;
+using LiepaLimitedTest.Applicaion.Api.Mapper;
+using LiepaLimitedTest.Applicaion.Api.Mapper.Configuration;
+using LiepaLimitedTest.Applicaion.Api.Models;
+using LiepaLimitedTest.Applicaion.Api.Services;
+using LiepaLimitedTest.BackgroundJobs;
 using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
 using LiepaLimitedTest.Infrastructure.Dapper;

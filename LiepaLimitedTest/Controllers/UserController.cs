@@ -1,4 +1,4 @@
-﻿using LiepaLimitedTest.Applicaion.Models;
+﻿using LiepaLimitedTest.Applicaion.Api.Models;
 using LiepaLimitedTest.Domain.Contracts;
 using LiepaLimitedTest.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
