@@ -13,7 +13,7 @@ namespace LiepaLimitedTest.Test
         private static readonly string Host = "https://localhost:44384";
         private static readonly HttpClient client = new HttpClient();
         private static readonly List<string>  Statuses = new List<string> { "New", "Active", "Blocked", "Deleted" };
-    static void Main(string[] args)
+        static void Main(string[] args)
         {
             Task.Run(async () =>
             {
